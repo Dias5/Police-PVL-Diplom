@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="news" style="opacity: 0; transition: opacity 0.5s ease-in-out;">
+<form method="GET" action="{{ url_for('search') }}">
+  <input type="text" name="query" placeholder="Введите ключевое слово">
+  <button type="submit">Поиск</button>
+</form>
+
+
+  <h2>Результаты поиска:</h2>
+  {% if results %}
+    <table>
+      <thead>
+        <tr>
+          <th style="border: 2px solid black; text-align:center;">ID</th>
+          <th style="border: 2px solid black; text-align:center;">Фамилия</th>
+          <th style="border: 2px solid black; text-align:center;">Имя</th>
+          <th style="border: 2px solid black; text-align:center;">Отчество</th>
+          <th style="border: 2px solid black; text-align:center;">Дата преступления</th>
+          <th style="border: 2px solid black; text-align:center;">Статья</th>
+          <th style="border: 2px solid black; text-align:center;">О статье</th>
+          <th style="border: 2px solid black; text-align:center;">Следователь</th>
+          <th style="border: 2px solid black; text-align:center;">Состояние дела</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in results %}
+          <tr>
+            <td style="border: 1px solid black; text-align:center;">{{ row[0] }}</td>
+            <td style="border: 1px solid black; text-align:center;">{{ row[1] }}</td>
+            <td style="border: 1px solid black; text-align:center;">{{ row[2] }}</td>
+            <td style="border: 1px solid black; text-align:center;">{{ row[3] }}</td>
+            <td style="border: 1px solid black; text-align:center;">{{ row[4] }}</td>
+            <td style="border: 1px solid black; text-align:center;">{{ row[5] }}</td>
+            <td style="border: 1px solid black; text-align:center;">{{ row[6] }}</td>
+            <td style="border: 1px solid black; text-align:center;">{{ row[7] }}</td>
+            <td style="border: 1px solid black; text-align:center;">{{ row[8] }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Ничего не найдено</p>
+  {% endif %}
+</div>
+
+<script>
+    window.addEventListener('load', function() {
+  var contactFaq = document.querySelector('.news');
+  contactFaq.style.opacity = 1;
+});
+
+</script>
+
+{% endblock %}

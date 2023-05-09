@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css', _external=True) }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    {% block title %}
+    {% if title %}
+      <title>{{ title }} - Департамента полиции Павлодарской области</title>
+    {% else %}
+      <title>Сайт Департамента полиции Павлодарской области</title>
+    {% endif %}
+    {% endblock %}
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap" rel="stylesheet">
+               
+</head>
+<body>
+
+<!-- <div class="container"> -->
+  
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-5">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+  
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav nav-pills  mt-2 mt-lg-0 ml-auto mr-auto ">
+      <li class="nav-item ">
+        <a class="nav-link mx-3" href="{{ url_for('FAQ') }}" id="FAQ">О нас</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link mx-3" href="{{ url_for('stat') }}" id="stat">Статистика по преступлениям</a>
+      </li>
+        <li class="nav-item ">
+          <a class="nav-link mx-3" href="{{ url_for('base') }}" id="base">Главная страница</a>
+        </li>
+        <li class="nav-item mx-3">
+          <a class="nav-link " href="{{ url_for('table') }}" id="table">Таблица преступников</a>
+        </li>
+        <li class="nav-item mx-3">
+          <a class="nav-link " href="{{ url_for('news') }}" id="news">Новости</a>
+        </li>
+    </ul>
+
+<script>
+   // получаем текущий URL
+ var currentUrl = window.location.pathname;
+ // добавляем класс active к кнопке, которая соответствует текущей странице
+
+ if (currentUrl === '/base') {
+   document.getElementById('base').classList.add('active');
+ } else if (currentUrl === '/table') {
+   document.getElementById('table').classList.add('active');
+     } else if (currentUrl === '/FAQ') {
+   document.getElementById('FAQ').classList.add('active');
+ } else if (currentUrl === '/statistic') {
+   document.getElementById('stat').classList.add('active');
+  } else if (currentUrl === '/news') {
+   document.getElementById('news').classList.add('active');
+ }
+</script>
+      
+    </div>
+  </nav>
+
+{% block content %}
+{% endblock %}
+
+<footer class="bg-dark text-center text-white">
+  <!-- Grid container -->
+  <div class="container p-4 pb-0">
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <!-- Instagram -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/dp_pavlodar/" target="_blank" role="button"
+        ><i class="fab fa-instagram"></i
+      ></a>
+
+      <h3>Номер телефона дежурной части: <a href="tel:+7 (7182) 39‒12‒70">+7 (7182) 39‒12‒70</a></h3>
+
+    </section>
+    <!-- Section: Social media -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © В рамках дипломного проекта сайт был создан студентом группы ВТиПО-419 Жаулыбаевым Д.К
+    <a class="text-white" href="https://mdbootstrap.com/"></a>
+  </div>
+  <!-- Copyright -->
+</footer>
+
+<script src="{{ url_for('static', filename='js/anim.js') }}"></script>
+
+  </body>
+</html>

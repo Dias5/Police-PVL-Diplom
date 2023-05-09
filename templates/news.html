@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="news-block" style="height: 50%; overflow: scroll; opacity: 0; transition: opacity 0.5s ease-in-out;">
+    <h1 style="text-align: center; text-size: 55px; padding: 20px;">Новости полиции Павлодарской области</h1>
+    {% for news_li in news %}
+        <h2><a href="{{ news_li[4] }}" target="_blank">{{ news_li[1] }}</a></h2>
+        <p style="font-size: 18px;">{{ news_li[2] }}</p>
+    {% endfor %}
+    </div>
+<script>
+    window.addEventListener('load', function() {
+  var contactFaq = document.querySelector('.news-block');
+  contactFaq.style.opacity = 1;
+});
+</script>
+{% endblock %}

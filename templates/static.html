@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="stat" style="opacity: 0; transition: opacity 0.5s ease-in-out;">
+<h1 style="text-align: center;">Статистика эффективности работы департамента полиции Павлодарской области</h1>
+<form method="POST" action="{{ url_for('stat') }}">
+    <h2>Статистика по преступникам:</h2>
+        <p>Активных дел: {{ active_count }}</p>
+        <p>Закрытых дел: {{ closed_count }}</p>
+        <p>Дел в архиве: {{ archive_count }}</p>
+    {{ form.csrf_token }}
+    <div>
+        {{ form.start_date.label }} {{ form.start_date }}
+    </div>
+    <div>
+        {{ form.end_date.label }} {{ form.end_date }}
+    </div>
+    <div>
+        {{ form.submit }}
+        {{ form.submit2 }}
+    </div>
+    <div id="plot">
+  {{ plot_div|safe }}
+</div>
+</form>
+</div>
+
+<script>
+    window.addEventListener('load', function() {
+  var contactFaq = document.querySelector('.stat');
+  contactFaq.style.opacity = 1;
+});
+
+</script>
+{% endblock %}
